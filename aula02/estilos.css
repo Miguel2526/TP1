@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #00d2c6;
+    --primary-hover: #00a4aa;
+    --primary-dark: #007bb5;
+    --bg-main: #0c1622;
+    --bg-card: rgba(25, 35, 48, 0.7);
+    --bg-card-hover: rgba(30, 45, 60, 0.9);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --success: #10b981;
+}
+
+/* Configurações Globais */
+body { 
+    font-family: 'Inter', sans-serif; 
+    margin: 0; 
+    padding: 20px 40px; 
+    background-color: var(--bg-main); 
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(0, 210, 198, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(0, 123, 181, 0.08), transparent 25%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* Título e Barra do Utilizador */
+.header-box {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-light);
+    padding: 25px 30px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.header-box h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 28px;
+    background: linear-gradient(to right, var(--primary), #4facfe);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.user-bar { 
+    background: rgba(0, 210, 198, 0.05);
+    backdrop-filter: blur(8px);
+    padding: 18px 25px; 
+    border-radius: 12px; 
+    margin-bottom: 35px;
+    border-left: 4px solid var(--primary);
+    border-top: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;            
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-bar span {
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.user-bar strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.user-bar a {
+    color: white;
+    background: linear-gradient(135deg, var(--danger), #b91c1c);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+.user-bar a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.5);
+}
+
+/* NOVO LAYOUT DE 3 COLUNAS (2 + 1) */
+.container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Área das Tabelas (Ocupa 2/3) */
+.main-content {
+    flex: 2; 
+}
+
+.dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Área da Direita (Ocupa 1/3) */
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* A Caixa (Box) */
+.box { 
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-light);
+    border-radius: 16px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    padding: 25px; 
+    flex: 1;
+    min-width: 0; 
+    box-sizing: border-box; 
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    color: var(--text-main);
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.box:hover { 
+    transform: translateY(-5px); 
+    background: var(--bg-card-hover);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 210, 198, 0.05);
+}
+
+.box h2, .box h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: white;
+    font-size: 1.25rem;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Tabelas */
+table { 
+    width: 100%; 
+    border-collapse: separate; 
+    border-spacing: 0;
+    margin-top: 10px; 
+}
+
+th, td { 
+    padding: 15px 12px; 
+    text-align: left; 
+    border-bottom: 1px solid var(--border-light);
+    word-wrap: break-word;
+    font-size: 0.95rem;
+}
+
+th { 
+    color: var(--primary); 
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--primary-dark); 
+}
+
+tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Larguras Específicas das Tabelas */
+.tabela-plano th:first-child, .tabela-plano td:first-child { width: 45%; }
+.tabela-plano th:last-child, .tabela-plano td:last-child { width: 55%; }
+
+/* --- Ajuste de Formulários e Botões --- */
+
+input[type="text"], input[type="file"], select, input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 3px rgba(0, 210, 198, 0.15);
+}
+
+.btn, button {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 210, 198, 0.2);
+    font-family: 'Inter', sans-serif;
+}
+
+.btn:hover, button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 210, 198, 0.4);
+}
+
+.btn:active, button:active {
+    transform: translateY(1px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* REGRAS ESPECÍFICAS PARA A SIDEBAR */
+.sidebar .box input[type="text"] {
+    width: 100%;          
+    max-width: none;  
+}
+
+.sidebar .box .btn {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Ações nas tabelas */
+.acoes-container { display: flex; gap: 10px; }
+.btn-acao { text-decoration: none; font-size: 12px; font-weight: bold; color: var(--primary); }
+
+a {
+    transition: opacity 0.3s ease;
+}
+a:hover {
+    opacity: 0.8;
+}
+
+/* Responsividade */
+@media (max-width: 1000px) {
+    .container { flex-direction: column; }
+    .main-content, .sidebar { width: 100%; }
+    body { padding: 15px; }
+}
+
+/* Garante que os botões da sidebar não quebrem o texto */
+.sidebar .btn {
+    white-space: nowrap;      
+    display: block;     
+    padding: 15px;        
+    text-align: center;
+}
+
+/* Estilos adicionais para Dashboard Notes e Badges */
+.lista-notas { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+.nota-card { 
+    background: rgba(0,0,0,0.2); 
+    border: 1px solid var(--border-light); 
+    padding: 15px; 
+    border-radius: 10px; 
+    color: var(--text-main); 
+    transition: all 0.3s ease;
+}
+.nota-card:hover {
+    background: rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.2);
+}
+
+@media print {
+    :root {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    body { background: white; padding: 0; font-family: 'Inter', sans-serif; }
+    body * { visibility: hidden; }
+    
+    .printable, .printable * { 
+        visibility: visible !important; 
+    }
+    
+    .printable { 
+        position: absolute; 
+        left: 0; 
+        top: 0; 
+        width: 100%; 
+    }
+    
+    .header-box, .user-bar, .main-content, .btn, button, form { 
+        display: none !important; 
+    }
+    
+    .sidebar { 
+        display: block !important; 
+        width: 100% !important; 
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .printable .box { 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; 
+        border: 1px solid #e2e8f0 !important; 
+        padding: 25px !important; 
+        page-break-inside: avoid;
+        margin-bottom: 25px !important;
+    }
+
+    /* Make the second box (Grades list) a clean light theme for paper */
+    .printable .box:nth-of-type(2) {
+        background: #f8fafc !important;
+        color: #1e293b !important;
+        border-top: 5px solid var(--primary-hover) !important;
+    }
+    
+    .printable .box:nth-of-type(2) h3 {
+        color: #0f172a !important;
+    }
+
+    .nota-card {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #334155 !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.02) !important;
+        border-left: 4px solid var(--primary) !important;
+    }
+
+    .nota-card span {
+        color: #475569 !important;
+        font-weight: 600 !important;
+    }
+
+    /* The grade number itself */
+    .nota-card strong {
+        color: var(--primary-dark) !important;
+    }
+
+    .box::before { display: none !important; }
+}
